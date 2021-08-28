@@ -1,0 +1,16 @@
+.top-bar {
+    width: 100%;
+    min-height: 35px;
+    background-color: #9EADBA;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.top-bar .dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(116, 116, 116);
+    border-radius: 30px;
+    margin: 3px;
+}

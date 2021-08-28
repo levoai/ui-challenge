@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  width: 100vw;
+  max-height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -27,6 +33,120 @@
 .App-link {
   color: #61dafb;
 }
+
+.App-body {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  color: rgb(53, 53, 53);
+  align-items: center;
+}
+
+.logo {
+    /* width: 100%; */
+    /* align-self: start; */
+    padding: 30px;
+    font-size: 2em;
+    font-weight: 900;
+    display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-self: flex-start;
+}
+
+.content::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.org-box {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 500px;
+    align-self: center;
+    align-items: center;
+    justify-self: center;
+    border: grey;
+    border-style: solid;
+    /* border-radius: 10px; */
+    /* align-self: center; */
+    background: #C3CFD9;
+    color: white;
+    text-decoration: none;
+    font-family: serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+    font-style: revert;
+    margin: 30px;
+}
+
+.org-box a {
+  text-decoration: none;
+  color: white;
+}
+
+
+.font-bold {
+  font-weight: bold;
+}
+
+
+.primary-color {
+  color: #740EC3
+}
+
+.secondary-color {
+  color: #BD35D1;
+}
+
+
+.width-100 {
+  width: 100%;
+}
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.margin-10 {
+  margin: 10px;
+}
+.space-around {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 
 @keyframes App-logo-spin {
   from {
