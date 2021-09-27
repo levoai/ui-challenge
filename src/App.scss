@@ -1,0 +1,101 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  pointer-events: none;
+  color: black;
+  padding: 0;
+  margin: 0;
+  font-size: 40px;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 20px 40px;
+  font-weight: bold;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App-menu {
+  width: 200px;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding-top: 20px;
+  padding-left: 10px;
+
+  .Menu {
+    margin: 2em 0;
+    padding: 0 1em;
+    list-style: none;
+  }
+
+  li {
+    color: #730fc3;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  li::before {
+    content: "";
+    border-color: transparent #111;
+    border-style: solid;
+    border-width: 0.4em 0 0.4em 0.6em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 0.9em;
+    position: relative;
+  }
+}
+
+.App-breadcrumb {
+  padding: 10px 16px;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: inline;
+    font-size: 20px;
+    a {
+      color: #6558F5;
+      text-decoration: none;
+      &:hover {
+        color: #01447e;
+        text-decoration: none;
+      }
+    }
+  }
+
+  li + li {
+    &:before {
+      padding: 12px;
+      color: #788896;
+      content: "\003E";
+    }
+  }
+}
+
+.purple {
+  color: #6558F5;
+}
+
+.failed {
+  border-left-color: #D3455B;
+}
+
+.succeed {
+  border-left-color: #1BAE9F;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}

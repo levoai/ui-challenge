@@ -1,0 +1,27 @@
+.ReportSummary {
+  display: flex;
+  flex-direction: column;
+  background: #F8F9FA;
+  padding: 12px 20px;
+  width: max-content;
+  
+  .summary-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #788896;
+    
+    .data {
+      display: flex;
+      align-items: center;
+      padding-right: 16px;
+      margin: 4px;
+      font-size: 16px;
+      font-weight: 600;
+
+      span {
+        padding-left: 4px;
+      } 
+    }
+  }
+}
