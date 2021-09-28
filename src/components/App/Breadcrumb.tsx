@@ -1,15 +1,17 @@
 import React from "react";
 
 type ComponentProps = {
-  data: Array<any>
+  breadcrumbItems: Array<any>
 }
 
-export const Breadcrumb: React.FunctionComponent<ComponentProps> = ({data}) => {
+export const Breadcrumb: React.FunctionComponent<ComponentProps> = ({breadcrumbItems}) => {
   
   return (
     <ul className="App-breadcrumb">
       {
-        data.map((item: any) => item.isLink ? <li><a href="#">{item.name}</a></li> : <li>{item.name}</li>)
+        breadcrumbItems.map((breadcrumbItem: any) => breadcrumbItem.isLink 
+          ? <li><a href="#">{breadcrumbItem.name}</a></li> 
+          : <li>{breadcrumbItem.name}</li>)
       }
     </ul>
   );

@@ -73,7 +73,7 @@ const OrganizationTestReportsDetails: React.FunctionComponent = (props: React.Pr
       <MainMenu organizationName={organization.name} />
       <div className="OrganizationTestReportsDetails">
         <div className="breadcrumb-container">
-          <Breadcrumb data={breadcrumbData} />
+          <Breadcrumb breadcrumbItems={breadcrumbData} />
           <div className="failed-flag">
             <BsFillXCircleFill />
             <span>FAILED</span>

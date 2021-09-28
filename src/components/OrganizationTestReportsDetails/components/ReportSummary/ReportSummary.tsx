@@ -2,8 +2,8 @@ import React from "react";
 import { BiTime, BiCalendarAlt, IoCubeOutline, AiOutlineBranches, CgGitCommit, AiOutlineGithub, AiOutlineGlobal } from 'react-icons/all';
 import { OrganizationReportDetail } from "../../../../models/OrganizationReportDetail";
 import { getMinutesFromMilliseconds } from "../../../../shared/utils";
-import './ReportSummary.scss';
 import TimeAgo from 'javascript-time-ago';
+import './ReportSummary.scss';
 
 type ComponentProps = {
   report: OrganizationReportDetail

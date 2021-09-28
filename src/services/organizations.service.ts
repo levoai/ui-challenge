@@ -24,12 +24,12 @@ class OrganizationService {
         // clear dummy data
         organizations.splice(0, organizations.length);
         // populate with real data
-        response.data.map((item: any) => organizations.push({
-          id: item.id,
-          name: item.name,
-          ownerEmail: item.owner_email,
-          ownerName: item.owner_name,
-          ownerPicture: item.owner_picture
+        response.data.map((responseData: any) => organizations.push({
+          id: responseData.id,
+          name: responseData.name,
+          ownerEmail: responseData.owner_email,
+          ownerName: responseData.owner_name,
+          ownerPicture: responseData.owner_picture
         } as Organization));
       }
     } catch (e) {
@@ -48,13 +48,13 @@ class OrganizationService {
     try {
       const response = await http.get(`/organizations/${organizationId}.json?key=${API_KEY}`);
       if (response.status === HTTP_CODES.SUCCESS) {
-        const item: any = response.data;
+        const responseData: any = response.data;
         organization = {
-          id: item.id,
-          name: item.name,
-          ownerEmail: item.owner_email,
-          ownerName: item.owner_name,
-          ownerPicture: item.owner_picture
+          id: responseData.id,
+          name: responseData.name,
+          ownerEmail: responseData.owner_email,
+          ownerName: responseData.owner_name,
+          ownerPicture: responseData.owner_picture
         } as Organization;
       }
     } catch (e) {
@@ -83,13 +83,13 @@ class OrganizationService {
         // clear dummy data
         reports.splice(0, reports.length);
         // populate with real data
-        response.data.map((item: any) => reports.push({
-          id: item.id,
-          name: item.name,
-          startDate: item.start_date,
-          failedTests: item.failed_tests,
-          succeedTests: item.succeed_tests,
-          duration: item.duration,
+        response.data.map((responseData: any) => reports.push({
+          id: responseData.id,
+          name: responseData.name,
+          startDate: responseData.start_date,
+          failedTests: responseData.failed_tests,
+          succeedTests: responseData.succeed_tests,
+          duration: responseData.duration,
         } as OrganizationReport));
       }
     } catch (e) {
@@ -126,24 +126,24 @@ class OrganizationService {
     try {
       const response = await http.get(`/organizations/${organizationId}/reports/${reportId}/details.json?key=${API_KEY}`);
       if (response.status === HTTP_CODES.SUCCESS) {
-        const item: any = response.data;
+        const responseData: any = response.data;
 
-        const endpoints: ReportEndpoint[] = item.endpoints.map((endpoint: any) => ({
+        const endpoints: ReportEndpoint[] = responseData.endpoints.map((endpoint: any) => ({
           duration: endpoint.duration,
           status: endpoint.status,
           url: endpoint.url,
         } as ReportEndpoint));
 
         reportDetails = {
-          id: item.id,
+          id: responseData.id,
           endpoints,
-          endDate: item.end_date,
-          duration: item.duration,
-          jobName: item.job_name,
-          branch: item.branch,
-          githubUser: item.github_user,
-          commit: item.commit,
-          environmentUrl: item.environment_url,
+          endDate: responseData.end_date,
+          duration: responseData.duration,
+          jobName: responseData.job_name,
+          branch: responseData.branch,
+          githubUser: responseData.github_user,
+          commit: responseData.commit,
+          environmentUrl: responseData.environment_url,
         } as OrganizationReportDetail;
       }
     } catch (e) {
