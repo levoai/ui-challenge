@@ -7,6 +7,7 @@ import { OrganizationReport } from "../models/OrganizationReport";
 
 import { OrganizationReportDetail } from "../models/OrganizationReportDetail";
 import { ReportEndpoint } from "../models/ReportEndpoint";
+import { OrganizationOwner } from "../models/OrganizationOwner";
 
 class OrganizationService {
   /**
@@ -27,9 +28,11 @@ class OrganizationService {
         response.data.map((responseData: any) => organizations.push({
           id: responseData.id,
           name: responseData.name,
-          ownerEmail: responseData.owner_email,
-          ownerName: responseData.owner_name,
-          ownerPicture: responseData.owner_picture
+          owner: {
+            email: responseData.owner_email,
+            name: responseData.owner_name,
+            picture: responseData.owner_picture
+          } as OrganizationOwner,
         } as Organization));
       }
     } catch (e) {
@@ -52,9 +55,11 @@ class OrganizationService {
         organization = {
           id: responseData.id,
           name: responseData.name,
-          ownerEmail: responseData.owner_email,
-          ownerName: responseData.owner_name,
-          ownerPicture: responseData.owner_picture
+          owner: {
+            email: responseData.owner_email,
+            name: responseData.owner_name,
+            picture: responseData.owner_picture
+          } as OrganizationOwner,
         } as Organization;
       }
     } catch (e) {
