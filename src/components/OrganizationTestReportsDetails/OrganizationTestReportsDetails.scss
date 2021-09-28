@@ -1,0 +1,62 @@
+.OrganizationTestReportsDetailsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  .OrganizationTestReportsDetails {
+    width: 100%;
+    padding-right: 30px;
+
+    .test-report-container {
+      padding: 16px;
+      width: 100%;
+
+      .results-container {
+        border-bottom: 2px solid #DFE6EE;
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-start;
+
+        .results-tab {
+          padding: 10px 15px;
+          border-bottom: 3px solid #6558F5;
+          font-size: 16px;
+          font-weight: 600;
+        }
+      }
+
+      .searchbar {
+        input {
+          margin-top: 10px;
+          width: 98%;
+          padding: 8px 10px;
+          border: 2px solid #C5CED6;
+          color: #788896;
+        }
+      }
+    }
+
+    .breadcrumb-container {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+
+      .failed-flag {
+        background-color: rgba(255, 0, 0, 0.5);
+        color: white;
+        height: 25px;
+        padding: 0px 8px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        font-weight: 600;
+
+        span {
+          padding-left: 6px;
+        } 
+      }
+    }
+  }
+}

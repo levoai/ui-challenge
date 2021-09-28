@@ -1,0 +1,43 @@
+.TestReportTile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #F8F9FA;
+  margin-bottom: 16px;
+  width: 100%;
+
+  .title-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    h3 {
+      color: #788896;
+      padding: 0;
+      padding-left: 0;
+      margin: 0 0 10px 0;
+    }
+  }
+
+  .time-ago {
+    color: #C3CFD9;
+  }
+
+  .tests-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+
+    .success {
+      padding-right: 40px;
+      color: #217868;
+    }
+    
+    .failed {
+      padding-right: 30px;
+      color: #D3455B;
+    }
+  }
+}
