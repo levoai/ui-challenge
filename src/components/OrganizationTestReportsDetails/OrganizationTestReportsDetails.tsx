@@ -16,7 +16,8 @@ const OrganizationTestReportsDetails: React.FunctionComponent = (props: React.Pr
   const [breadcrumbData, setBreadcrumbData] = useState<Array<any>>([
     {
       isLink: true,
-      name: 'Test Reports'
+      name: 'Test Reports',
+      id: 1,
     },
   ]);
   const [searchValue, setSearchValue] = useState<string>('');
@@ -32,6 +33,7 @@ const OrganizationTestReportsDetails: React.FunctionComponent = (props: React.Pr
       {
         isLink: false,
         name: organization.name,
+        id: 2,
       }
     ]);
   }

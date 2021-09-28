@@ -30,7 +30,10 @@ const OrganizationTestsReports: React.FunctionComponent = (props: React.PropsWit
         <h2>Test Reports</h2>
         {
           testReports.map((report: OrganizationReport) => (
-            <Link to={`/organizations/${organization.id}/test-reports/${report.id}`}>
+            <Link 
+              key={report.id}
+              to={`/organizations/${organization.id}/test-reports/${report.id}`}
+            >
               <TestReportTile report={report} />
             </Link>
           ))

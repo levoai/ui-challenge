@@ -10,8 +10,8 @@ export const Breadcrumb: React.FunctionComponent<ComponentProps> = ({breadcrumbI
     <ul className="App-breadcrumb">
       {
         breadcrumbItems.map((breadcrumbItem: any) => breadcrumbItem.isLink 
-          ? <li><a href="#">{breadcrumbItem.name}</a></li> 
-          : <li>{breadcrumbItem.name}</li>)
+          ? <li key={breadcrumbItem.id}><a href="#">{breadcrumbItem.name}</a></li> 
+          : <li key={breadcrumbItem.id}>{breadcrumbItem.name}</li>)
       }
     </ul>
   );
