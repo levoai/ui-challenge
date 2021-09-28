@@ -1,15 +1,12 @@
 ## Component Structure
 
-I built them reusables divided into two categories: Container and Presentational trying to follow Dan Abramov advices. [See more](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0):
-
 ```
 MyComponent/
   components/ -> Child components
     ChildComponent/
     AnotherChildComponent/
   index.ts -> just re-exports components in order to avoid double imports like '/MyComponent/MyComponent'.
-  MyComponent.ts -> Presentational, just a plain view.
-  MyComponentContainer.tsx -> Container, used for fetching, preparing data, getting data from redux-store...
+  MyComponent.ts -> Used for fetching, preparing data, getting data if needed.
   MyComponent.scss -> Styles, it generates a .css file automatically.
 ```
 

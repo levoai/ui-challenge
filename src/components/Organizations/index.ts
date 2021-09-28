@@ -1,1 +1,1 @@
-export {default} from './OrganizationsContainer';
+export {default} from './Organizations';

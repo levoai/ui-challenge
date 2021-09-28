@@ -1,1 +1,1 @@
-export {default} from './OrganizationTestReportsDetailsContainer';
+export {default} from './OrganizationTestReportsDetails';
