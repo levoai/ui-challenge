@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    background-color: RGB(247, 249, 250);
+    justify-content: space-between;
+    margin: 13px 10px;
+    padding: 10px 10px;
+}
+.executionFont{
+    color: RGB(120, 136, 150);
+}
+.timeOffsetFont{
+    color: RGB(211, 219, 227);   
+    margin-left: 20px;
+}
+.fontPassed{
+    color: RGB(55, 133, 119);   
+    margin-right: 40px;
+}
+.fontFailed{
+    color: RGB(211, 111, 128);   
+    margin-right: 40px;
+}
+.markSection{
+    margin-top: 43px;
+}

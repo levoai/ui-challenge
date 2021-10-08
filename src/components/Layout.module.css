@@ -1,0 +1,14 @@
+.container {
+
+}
+
+.header{
+  background-color: RGB(158, 173, 186);
+  width: 100vw;
+  height: 50px;
+}
+
+.logo{
+  height: 30px;
+  margin-top: 10px;
+}

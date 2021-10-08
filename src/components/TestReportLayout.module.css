@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+}
+
+.leftSideBar {
+    width: 200px;
+    height: 100vh;
+    border: 2px solid RGB(195, 207, 217);
+    padding: 20px;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.fontBlack{
+    color: black;
+}
+.fontReportDetail {
+    color: RGB(115, 15, 195);
+}
