@@ -1,0 +1,24 @@
+.outline {
+  border:1px solid RGB(226, 230, 233);
+  margin: 10px 20%;
+  cursor: pointer;
+}
+
+.container{
+  border:1px solid RGB(134, 149, 162);
+  background-color: RGB(195,207,217);
+  padding: 20px 0px;
+  display: flex;
+  align-items: center;
+} 
+
+img {
+  width: 50px;
+  padding: 0px 20px;
+}
+
+.h4Font {
+  color: RGB(252, 253, 253);
+  flex-grow: 1;
+  margin-right: 70px;
+}
