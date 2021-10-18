@@ -1,7 +1,7 @@
 export type DateString = string;
 
 export interface IOrganization {
-  id: number;
+  id: string;
   name: string;
   ownerEmail?: string;
   ownerName?: string;
@@ -9,7 +9,7 @@ export interface IOrganization {
 }
 
 export interface IReport {
-  id: number;
+  id: string;
   name: string;
   duration: number;
   startDate: DateString;
@@ -17,7 +17,7 @@ export interface IReport {
   succeedTests: number;
 }
 
-export type TStatus = 'ERROR' | 'SUCCESS';
+export type TStatus = 'FAILURE' | 'SUCCESS';
 
 export interface IEndpoint {
   url: string;
@@ -26,7 +26,7 @@ export interface IEndpoint {
 }
 
 export interface IReportDetails {
-  id: number;
+  id: string;
   endpoints: IEndpoint[];
   duration: number;
   branch: string;

@@ -1,16 +1,16 @@
 [
-    {
-      "id": 1,
-      "name": "Jaxnation",
-      "owner_email": "lhouston0@artisteer.com",
-      "owner_name": "Latrena Houston",
-      "owner_picture": "http://dummyimage.com/182x100.png/ff4444/ffffff"
-    },
-    {
-      "id": 2,
-      "name": "Yodo",
-      "owner_email": "gbloom1@umich.edu",
-      "owner_name": "Griffin Bloom",
-      "owner_picture": "http://dummyimage.com/211x100.png/ff4444/ffffff"
-    }
-  ]
+  {
+    "id": "1",
+    "name": "Jaxnation",
+    "owner_email": "lhouston0@artisteer.com",
+    "owner_name": "Latrena Houston",
+    "owner_picture": "http://dummyimage.com/182x100.png/ff4444/ffffff"
+  },
+  {
+    "id": "2",
+    "name": "Yodo",
+    "owner_email": "gbloom1@umich.edu",
+    "owner_name": "Griffin Bloom",
+    "owner_picture": "http://dummyimage.com/211x100.png/ff4444/ffffff"
+  }
+]

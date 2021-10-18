@@ -4,7 +4,13 @@ import axios from 'axios';
 import mockOrganizations from '../mocks/organizations.json';
 import mockReports from '../mocks/reports.json';
 import mockReport from '../mocks/report.json';
-import { DateString, IOrganization, IReport, IReportDetails } from '../types';
+import {
+  DateString,
+  IEndpoint,
+  IOrganization,
+  IReport,
+  IReportDetails,
+} from '../types';
 
 const CONNECTED = false;
 
@@ -25,12 +31,17 @@ type OriginalReport = Pick<IReport, 'id' | 'name' | 'duration'> & {
 
 type OriginalReportDetails = Pick<
   IReportDetails,
-  'id' | 'endpoints' | 'duration' | 'branch' | 'commit'
+  'id' | 'duration' | 'branch' | 'commit'
 > & {
   end_date: DateString;
   job_name: string;
   github_user: string;
   environment_url: string;
+  endpoints: Array<
+    Omit<IEndpoint, 'status'> & {
+      status: 'ERROR' | 'FAILURE' | 'SUCCESS';
+    }
+  >;
 };
 
 const transformToOrganization = (
@@ -63,7 +74,12 @@ const transformToReportDetails = (
   environmentUrl: reportDetails.environment_url,
   branch: reportDetails.branch,
   commit: reportDetails.commit,
-  endpoints: reportDetails.endpoints,
+  endpoints: [
+    ...reportDetails.endpoints.map((endpoint) => ({
+      ...endpoint,
+      status: endpoint.status === 'ERROR' ? 'FAILURE' : endpoint.status,
+    })),
+  ],
 });
 
 async function getOrganizations(): Promise<IOrganization[]> {
@@ -78,9 +94,12 @@ async function getOrganizations(): Promise<IOrganization[]> {
   return mockOrganizations.map(transformToOrganization);
 }
 
-async function getOrganizationById(
-  organizationId: number,
-): Promise<IOrganization | undefined> {
+async function getOrganization({
+  queryKey,
+}: {
+  queryKey: string[];
+}): Promise<IOrganization | undefined> {
+  const [, organizationId] = queryKey;
   if (CONNECTED) {
     const response = await axios.get<OriginalOrganization[]>(
       `${API_HOST}/organizations.json?key=${API_KEY}`,
@@ -96,7 +115,12 @@ async function getOrganizationById(
     .find(({ id }) => id === organizationId);
 }
 
-async function getReports(organizationId: number): Promise<IReport[]> {
+async function getReports({
+  queryKey,
+}: {
+  queryKey: string[];
+}): Promise<IReport[]> {
+  const [, organizationId] = queryKey;
   if (CONNECTED) {
     const response = await axios.get<OriginalReport[]>(
       `${API_HOST}/organizations/${organizationId}/reports.json?key=${API_KEY}`,
@@ -108,12 +132,11 @@ async function getReports(organizationId: number): Promise<IReport[]> {
 }
 
 async function getReport({
-  reportId,
-  organizationId,
+  queryKey,
 }: {
-  reportId: number;
-  organizationId: number;
+  queryKey: string[];
 }): Promise<IReportDetails> {
+  const [, organizationId, reportId] = queryKey;
   if (CONNECTED) {
     const response = await axios.get<OriginalReportDetails>(
       `${API_HOST}/organizations/${organizationId}/reports/${reportId}/details.json?key=${API_KEY}`,
@@ -127,7 +150,7 @@ async function getReport({
 
 export default {
   getOrganizations,
-  getOrganizationById,
+  getOrganization,
   getReports,
   getReport,
 };
