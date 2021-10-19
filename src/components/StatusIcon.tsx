@@ -34,7 +34,11 @@ const StatusIcon: React.FC<StatusIconProps> = ({ status, reverse }) => {
     const backgroundColor = reverse ? 'white' : COLORS.failure;
     const foregroundColor = reverse ? COLORS.failure : 'white';
     return (
-      <Icon foregroundColor={foregroundColor} backgroundColor={backgroundColor}>
+      <Icon
+        foregroundColor={foregroundColor}
+        backgroundColor={backgroundColor}
+        data-testid="failure-icon"
+      >
         <GoX size={10} />
       </Icon>
     );
@@ -43,7 +47,11 @@ const StatusIcon: React.FC<StatusIconProps> = ({ status, reverse }) => {
   const backgroundColor = reverse ? 'white' : COLORS.success;
   const foregroundColor = reverse ? COLORS.success : 'white';
   return (
-    <Icon foregroundColor={foregroundColor} backgroundColor={backgroundColor}>
+    <Icon
+      foregroundColor={foregroundColor}
+      backgroundColor={backgroundColor}
+      data-testid="passed-icon"
+    >
       <GoCheck size={10} />
     </Icon>
   );

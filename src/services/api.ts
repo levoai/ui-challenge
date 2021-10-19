@@ -1,9 +1,6 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 
-import mockOrganizations from '../mocks/organizations.json';
-import mockReports from '../mocks/reports.json';
-import mockReport from '../mocks/report.json';
 import {
   DateString,
   IEndpoint,
@@ -12,18 +9,18 @@ import {
   IReportDetails,
 } from '../types';
 
-const CONNECTED = false;
-
 const API_HOST = process.env.REACT_APP_API_HOST;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-type OriginalOrganization = Pick<IOrganization, 'id' | 'name'> & {
+type OriginalOrganization = Pick<IOrganization, 'name'> & {
+  id: number;
   owner_email: string;
   owner_name: string;
   owner_picture: string;
 };
 
-type OriginalReport = Pick<IReport, 'id' | 'name' | 'duration'> & {
+type OriginalReport = Pick<IReport, 'name' | 'duration'> & {
+  id: number;
   start_date: DateString;
   failed_tests: number;
   succeed_tests: number;
@@ -31,8 +28,9 @@ type OriginalReport = Pick<IReport, 'id' | 'name' | 'duration'> & {
 
 type OriginalReportDetails = Pick<
   IReportDetails,
-  'id' | 'duration' | 'branch' | 'commit'
+  'duration' | 'branch' | 'commit'
 > & {
+  id: number;
   end_date: DateString;
   job_name: string;
   github_user: string;
@@ -47,7 +45,7 @@ type OriginalReportDetails = Pick<
 const transformToOrganization = (
   organization: OriginalOrganization,
 ): IOrganization => ({
-  id: organization.id,
+  id: String(organization.id),
   name: organization.name,
   ownerEmail: organization.owner_email,
   ownerName: organization.owner_name,
@@ -55,7 +53,7 @@ const transformToOrganization = (
 });
 
 const transformToReport = (report: OriginalReport): IReport => ({
-  id: report.id,
+  id: String(report.id),
   name: report.name,
   duration: report.duration,
   startDate: report.start_date,
@@ -66,7 +64,7 @@ const transformToReport = (report: OriginalReport): IReport => ({
 const transformToReportDetails = (
   reportDetails: OriginalReportDetails,
 ): IReportDetails => ({
-  id: reportDetails.id,
+  id: String(reportDetails.id),
   duration: reportDetails.duration,
   endDate: reportDetails.end_date,
   jobName: reportDetails.job_name,
@@ -83,15 +81,11 @@ const transformToReportDetails = (
 });
 
 async function getOrganizations(): Promise<IOrganization[]> {
-  if (CONNECTED) {
-    const response = await axios.get<OriginalOrganization[]>(
-      `${API_HOST}/organizations.json?key=${API_KEY}`,
-    );
+  const response = await axios.get<OriginalOrganization[]>(
+    `${API_HOST}/organizations.json?key=${API_KEY}`,
+  );
 
-    return response.data?.map(transformToOrganization);
-  }
-
-  return mockOrganizations.map(transformToOrganization);
+  return response.data?.map(transformToOrganization);
 }
 
 async function getOrganization({
@@ -100,18 +94,13 @@ async function getOrganization({
   queryKey: string[];
 }): Promise<IOrganization | undefined> {
   const [, organizationId] = queryKey;
-  if (CONNECTED) {
-    const response = await axios.get<OriginalOrganization[]>(
-      `${API_HOST}/organizations.json?key=${API_KEY}`,
-    );
 
-    return response.data
-      ?.map(transformToOrganization)
-      .find(({ id }) => id === organizationId);
-  }
+  const response = await axios.get<OriginalOrganization[]>(
+    `${API_HOST}/organizations.json?key=${API_KEY}`,
+  );
 
-  return mockOrganizations
-    .map(transformToOrganization)
+  return response.data
+    ?.map(transformToOrganization)
     .find(({ id }) => id === organizationId);
 }
 
@@ -121,14 +110,12 @@ async function getReports({
   queryKey: string[];
 }): Promise<IReport[]> {
   const [, organizationId] = queryKey;
-  if (CONNECTED) {
-    const response = await axios.get<OriginalReport[]>(
-      `${API_HOST}/organizations/${organizationId}/reports.json?key=${API_KEY}`,
-    );
 
-    return response.data?.map(transformToReport);
-  }
-  return mockReports.map(transformToReport);
+  const response = await axios.get<OriginalReport[]>(
+    `${API_HOST}/organizations/${organizationId}/reports.json?key=${API_KEY}`,
+  );
+
+  return response.data?.map(transformToReport);
 }
 
 async function getReport({
@@ -137,15 +124,12 @@ async function getReport({
   queryKey: string[];
 }): Promise<IReportDetails> {
   const [, organizationId, reportId] = queryKey;
-  if (CONNECTED) {
-    const response = await axios.get<OriginalReportDetails>(
-      `${API_HOST}/organizations/${organizationId}/reports/${reportId}/details.json?key=${API_KEY}`,
-    );
 
-    return transformToReportDetails(response.data);
-  }
+  const response = await axios.get<OriginalReportDetails>(
+    `${API_HOST}/organizations/${organizationId}/reports/${reportId}/details.json?key=${API_KEY}`,
+  );
 
-  return transformToReportDetails(mockReport as OriginalReportDetails);
+  return transformToReportDetails(response.data);
 }
 
 export default {

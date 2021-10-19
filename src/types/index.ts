@@ -3,9 +3,9 @@ export type DateString = string;
 export interface IOrganization {
   id: string;
   name: string;
-  ownerEmail?: string;
-  ownerName?: string;
-  ownerPicture?: string;
+  ownerEmail: string;
+  ownerName: string;
+  ownerPicture: string;
 }
 
 export interface IReport {

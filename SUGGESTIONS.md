@@ -1,3 +1,4 @@
 1. The types for the report and report details are not consistent so it is difficult to work with them.
 2. Better API work could avoid a lot of workarounds in the Front-End. For example if the report is actually unique, then there is no need to share the organization id into the reports.
 3. The endpoint for report details has some issues since there are two error status "ERROR" and "FAILURE".
+4. The endpoints deliver inconsistent data so it will be easier to have a mock json stored and the mock server return it (for testing and dev purposes).
