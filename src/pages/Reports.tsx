@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import organizationsApi from '../services/api';
 import ReportItem from '../components/ReportItem';
-import { QueryKeys, SPACING } from '../constants';
+import { COLORS, QueryKeys, SPACING } from '../constants';
 
 const ReportLink = styled(Link)`
   text-decoration: none;
@@ -15,7 +15,7 @@ const ReportLink = styled(Link)`
 
 const Title = styled.h1`
   margin-top: 0;
-  color: white;
+  color: ${COLORS.darkInk};
 `;
 
 const Container = styled.div`

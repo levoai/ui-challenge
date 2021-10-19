@@ -3,15 +3,17 @@ import styled from 'styled-components';
 
 import logo from '../assets/logo.svg';
 
-import { SPACING } from '../constants';
+import { COLORS, SPACING } from '../constants';
 
 const Page = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
 `;
 
 const Header = styled.header`
   padding: ${SPACING}px;
+  background-color: ${COLORS.primary};
 `;
 
 type LayoutProps = {

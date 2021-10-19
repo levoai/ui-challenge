@@ -6,30 +6,32 @@ import { Link } from 'react-router-dom';
 import OrganizationCard from '../components/OrganizationCard';
 import Layout from '../components/Layout';
 import { IOrganization } from '../types';
-import { QueryKeys } from '../constants';
+import { COLORS, QueryKeys, SPACING } from '../constants';
 import organizationsApi from '../services/api';
 
-const OrganizationLink = styled(Link)`
-  text-decoration: none;
-  width: 100%;
-`;
-
 const Title = styled.h1`
-  color: white;
+  color: ${COLORS.darkInk};
 `;
 
 const Subtitle = styled.h2`
-  color: white;
+  margin: 0 0 ${SPACING * 2}px;
+  color: ${COLORS.darkInk};
 `;
 
 const Main = styled(Layout)`
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+`;
+
+const Container = styled.section`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  gap: ${SPACING}px ${SPACING}px;
+`;
+
+const OrganizationLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const Home: React.FC = () => {
@@ -51,14 +53,16 @@ const Home: React.FC = () => {
     <Main>
       <Title>Organizations</Title>
       <Subtitle>Pick the organization you want to access to</Subtitle>
-      {(organizations as IOrganization[]).map((organization) => (
-        <OrganizationLink
-          key={organization.id}
-          to={`/organization/${organization.id}/reports`}
-        >
-          <OrganizationCard {...organization} />
-        </OrganizationLink>
-      ))}
+      <Container>
+        {(organizations as IOrganization[]).map((organization) => (
+          <OrganizationLink
+            key={organization.id}
+            to={`/organization/${organization.id}/reports`}
+          >
+            <OrganizationCard {...organization} />
+          </OrganizationLink>
+        ))}
+      </Container>
     </Main>
   );
 };

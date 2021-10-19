@@ -1,40 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GrOrganization } from 'react-icons/gr';
 
 import { COLORS, SPACING } from '../constants';
 import { IOrganization } from '../types';
-
-const ICON_SIZE = 42;
 
 const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
   padding: ${SPACING}px;
-  color: white;
-  background-color: ${COLORS.failed};
-  margin-bottom: ${SPACING}px;
+  color: ${COLORS.ink};
+  background-color: ${COLORS.gray};
+  text-align: center;
 `;
 
-const Icon = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: ${SPACING / 3}px;
-  width: ${ICON_SIZE}px;
-  height: ${ICON_SIZE}px;
-  border-radius: 50%;
-  background-color: white;
-  margin-left: ${SPACING}px;
+const Picture = styled.img`
+  max-width: 90%;
+`;
+
+const OrganizationName = styled.p`
+  font-size: 1.5rem;
+  margin-bottom: 0;
+`;
+
+const Email = styled.p`
+  font-size: 0.9rem;
+  margin-top: ${SPACING / 3}px;
 `;
 
 const Name = styled.p`
-  text-align: center;
-`;
-
-const Extra = styled.p`
-  text-align: center;
+  margin-bottom: 0;
 `;
 
 type OrganizationCardProps = IOrganization;
@@ -46,13 +42,10 @@ const OrganizationCard: React.FC<OrganizationCardProps> = ({
   ownerName,
 }) => (
   <Card>
-    <Icon>
-      <GrOrganization color={COLORS.lightInk} />
-    </Icon>
-    <Name>{name}</Name>
-    <img src={ownerPicture} alt="owner" />
-    <Extra>{ownerEmail}</Extra>
-    <Extra>{ownerName}</Extra>
+    <Picture src={ownerPicture} alt="owner" />
+    <OrganizationName>{name}</OrganizationName>
+    <Name>{ownerName}</Name>
+    <Email>{ownerEmail}</Email>
   </Card>
 );
 

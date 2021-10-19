@@ -2,15 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Layout from '../components/Layout';
+import { COLORS } from '../constants';
 
 const Title = styled.h1`
-  color: white;
+  color: ${COLORS.ink};
   font-size: 15rem;
   margin-bottom: 0;
 `;
 
 const Subtitle = styled.h2`
-  color: white;
+  color: ${COLORS.ink};
 `;
 
 const Main = styled(Layout)`

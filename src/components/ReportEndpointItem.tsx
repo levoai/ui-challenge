@@ -7,11 +7,12 @@ import { IEndpoint, TStatus } from '../types';
 const Card = styled.div<{ status: TStatus }>`
   padding: ${SPACING}px;
   border-left: 2px solid
-    ${({ status }) => (status === 'FAILURE' ? COLORS.failed : COLORS.success)};
+    ${({ status }) => (status === 'FAILURE' ? COLORS.failure : COLORS.success)};
   background-color: ${COLORS.gray};
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  margin-bottom: ${SPACING}px;
 `;
 
 const EndpointName = styled.p`

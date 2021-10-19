@@ -4,24 +4,40 @@ import { useQuery } from 'react-query';
 import styled from 'styled-components';
 
 import organizationsApi from '../services/api';
-import { QueryKeys, SPACING } from '../constants';
+import { COLORS, QueryKeys, SPACING } from '../constants';
 import Layout from '../components/Layout';
 import { Report, Reports } from '.';
 
 const Aside = styled.aside`
   padding: ${SPACING}px;
-  height: 100vh;
   width: 300px;
-  border-right: 1px solid gray;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
+  background-color: ${COLORS.primary};
+`;
+
+const AsidePicture = styled.img`
+  max-width: 90%;
+`;
+
+const AsideOrganization = styled.h2`
+  font-size: 1.6rem;
+  margin-bottom: 0%;
+`;
+
+const AsideAuthor = styled.p`
+  margin-bottom: 0;
+`;
+
+const AsideEmail = styled.p`
+  font-size: 0.9rem;
+  margin-top: ${SPACING / 3}px;
 `;
 
 const Section = styled.section`
   flex: 1;
-  border: 1px solid red;
 `;
 
 const Main = styled(Layout)`
@@ -54,10 +70,10 @@ const Organization: React.FC = () => {
   return (
     <Main>
       <Aside>
-        <img src={organization.ownerPicture} alt="organization" />
-        <p>{organization.name}</p>
-        <p>{organization.ownerEmail}</p>
-        <p>{organization.ownerName}</p>
+        <AsidePicture src={organization.ownerPicture} alt="organization" />
+        <AsideOrganization>{organization.name}</AsideOrganization>
+        <AsideAuthor>{organization.ownerName}</AsideAuthor>
+        <AsideEmail>{organization.ownerEmail}</AsideEmail>
       </Aside>
       <Section>
         <Switch>
