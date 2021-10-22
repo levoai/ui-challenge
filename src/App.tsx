@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Organizations } from "./pages/Organizations";
+import { Reports } from "./pages/Reports";
+import { ReportDetail } from "./pages/ReportDetail";
+import './App.scss';
 export const App: React.FunctionComponent = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="logo" />
-        <p>
-          UI Engineer Position Take Home Challenge
-        </p>
-        <a
-          className="App-link"
-          href="https://doc.clickup.com/d/h/a0kg5-1183/8d71939ada06572"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open the Exercise
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Route component={Organizations} exact path="/" />
+        <Route component={Reports} exact path="/Reports/:id/:name" />
+        <Route component={ReportDetail} exact path="/ReportDetail/:org_id/:org_name/:report_id" />
+      </Suspense>
+    </Router>
   );
 }
 
