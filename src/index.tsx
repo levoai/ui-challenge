@@ -1,15 +1,12 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Store from "./store";
-import { initailState as app } from "./store/app";
+import { initailState, stateInterface } from "./store/app";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const initialState = {
-  app,
-};
+const initialState: stateInterface = initailState;
 
 ReactDOM.render(
   <Store.Provider initialState={initialState}>
