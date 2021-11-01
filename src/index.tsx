@@ -1,14 +1,18 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Store from "./store";
+import { initailState, stateInterface } from "./store/app";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+const initialState: stateInterface = initailState;
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Store.Provider initialState={initialState}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Store.Provider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
