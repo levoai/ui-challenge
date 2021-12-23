@@ -18,6 +18,13 @@ export const App: React.FunctionComponent = () => {
         >
           Open the Exercise
         </a>
+        <br/>
+        <a
+          className="App-link"
+          href="/organizations"
+        >
+          Go to the solution
+        </a>
       </header>
     </div>
   );
